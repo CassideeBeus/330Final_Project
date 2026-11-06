@@ -1,9 +1,9 @@
 ---
-title: "Regression "
-subtitle: "Replace with one sentence that tells readers why the question matters"
+title: "Olympics Regression Stat 330 Final"
+subtitle: "Does a country's economic state or population effect their chances of winning medals at the Olympics?"
 author: "Rachael Casady and Cassidee Beus"
 date: last-modified
-description: "Replace with a brief description for link previews."
+description: "Economic and population impact on medals won at the Olympics"
 ---
 
 **Narrative word count:** Replace with a number from 750 to 1,000.
@@ -15,6 +15,7 @@ This template suggests one way to tell the story. You may rename, combine, or re
 ## The question
 
 **In one or two short paragraphs, introduce the setting, audience, focused research question, data source, observational unit, response, important predictors, and one important data limitation. Lead with what makes the question worth answering.**
+
 
 ## What the baseline shows
 
