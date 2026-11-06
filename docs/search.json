@@ -11,89 +11,89 @@
     "href": "ai-use.html#starting-point",
     "title": "AI Use and Verification",
     "section": "Starting point",
-    "text": "Starting point\nAI system and date: Replace.\nBefore using AI for the required extension, briefly state your question, course-based core model, baseline result, and the specific limitation or opportunity you wanted to address."
+    "text": "Starting point\nAI system and date: Chat GPT 11/6/26\nBefore using AI for the required extension, briefly state your question, course-based core model, baseline result, and the specific limitation or opportunity you wanted to address.\nOur question is the effects of country economic and population factors on winning Olympic medals. We are using data from the Paris 2024 Olympics. We want to use AI to specifically work with our response variable, number of medals won, since it is right skewed. Most countries at the olympics win 0 medals."
   },
   {
     "objectID": "ai-use.html#substantive-prompts",
     "href": "ai-use.html#substantive-prompts",
     "title": "AI Use and Verification",
     "section": "Substantive prompts",
-    "text": "Substantive prompts\nPaste the exact prompts that shaped the extension. Include the customized extension-selection prompt from the checkpoint and any important implementation follow-ups. Delete unused prompt blocks.\n\nReplace with an exact prompt.\n\n\nReplace with another exact prompt, if needed."
+    "text": "Substantive prompts\nPaste the exact prompts that shaped the extension. Include the customized extension-selection prompt from the checkpoint and any important implementation follow-ups. Delete unused prompt blocks.\n\nWe are doing regression for a statistics class project on this data from the Paris Olympics. We want to look at the effect of economic and population variables on total medals won per country. Our response is right skewed since most countries win 0 medals, what are some things we could do to work with that?\n\n\nHow could we include number of athletes as a control or predictor?\n\n\nHow would we do a negative binomial regression?"
   },
   {
     "objectID": "ai-use.html#my-decisions",
     "href": "ai-use.html#my-decisions",
     "title": "AI Use and Verification",
     "section": "My decisions",
-    "text": "My decisions\n\nAccepted: What useful advice did you use?\nChanged: What did you adapt to fit your data or goals?\nRejected or corrected: What advice was unsuitable, unnecessary, or wrong?\n\nConnection to the final case study: Identify where the extension’s method and result appear on the final page and how they strengthen the course-based analysis."
+    "text": "My decisions\n\nAccepted: What useful advice did you use?\n\nAI reccomended we log the predictors as well as the response, since most coefficients are skewed. We originally were only thinking of the right-skewed response variable. It showed us how to use the Negative-Binomial regression model since it automatically logs the data and allows more spread.\n\nChanged: What did you adapt to fit your data or goals?\n\nWe are going to log the response and predictors in our regression model and account for number of athletes as a control.\n\nRejected or corrected: What advice was unsuitable, unnecessary, or wrong?\n\nAI told us a Poisson model wouldn’t work well with our data, then still gave it as an option.\nConnection to the final case study: Identify where the extension’s method and result appear on the final page and how they strengthen the course-based analysis.\nIn our regression, to account large variance in response and predictor variables, we used the Negative-Binomial regression model."
   },
   {
     "objectID": "ai-use.html#independent-verification",
     "href": "ai-use.html#independent-verification",
     "title": "AI Use and Verification",
     "section": "Independent verification",
-    "text": "Independent verification\n\nCheck and result: Replace with an official source, diagnostic, simulation, manual calculation, comparison with a known method, or another suitable check.\nCheck and result: Replace with a different check and what you learned.\n\nLink or cite verification sources where appropriate. A second AI response does not count as independent verification."
+    "text": "Independent verification\n\nCheck and result: It makes sense that AI would suggest the Negative-Binomial model because of its ability to log the data. We talked in class about how logging the response and/or predictors allows us to work with data with more spread and large variance relative to the mean.\nCheck and result: This source explains why we should use log(y + 1) instead of just log(y). Since the log of 0 is undefined, adding 1 allows us to account for 0 values after taking the log, especially since so many countries have 0 medals. The source also warns how this method can distort the data results. https://casrai.org/guides/log-and-other-data-transformations\n\nLink or cite verification sources where appropriate. A second AI response does not count as independent verification."
   },
   {
     "objectID": "ai-use.html#remaining-limitation",
     "href": "ai-use.html#remaining-limitation",
     "title": "AI Use and Verification",
     "section": "Remaining limitation",
-    "text": "Remaining limitation\nState one important uncertainty, failure mode, or limitation that remains."
+    "text": "Remaining limitation\nState one important uncertainty, failure mode, or limitation that remains.\nWhile taking the log transformation +1 for our data accounts for spread, skewness, and many values equal to 0, this method could distort the transformed data and cause disproportionate results, particalarily for values close to 0."
   },
   {
     "objectID": "ai-use.html#other-ai-use-if-any",
     "href": "ai-use.html#other-ai-use-if-any",
     "title": "AI Use and Verification",
     "section": "Other AI use, if any",
-    "text": "Other AI use, if any\nBriefly disclose earlier debugging, proofreading, or other AI assistance. Write “None” if there was no other use."
+    "text": "Other AI use, if any\nBriefly disclose earlier debugging, proofreading, or other AI assistance. Write “None” if there was no other use.\nNone"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Regression",
+    "title": "Statistical Regression and the Paris 2024 Olympics",
     "section": "",
     "text": "Narrative word count: Replace with a number from 750 to 1,000."
   },
   {
     "objectID": "index.html#the-question",
     "href": "index.html#the-question",
-    "title": "Regression",
+    "title": "Statistical Regression and the Paris 2024 Olympics",
     "section": "The question",
     "text": "The question\nIn one or two short paragraphs, introduce the setting, audience, focused research question, data source, observational unit, response, important predictors, and one important data limitation. Lead with what makes the question worth answering."
   },
   {
     "objectID": "index.html#what-the-baseline-shows",
     "href": "index.html#what-the-baseline-shows",
-    "title": "Regression",
+    "title": "Statistical Regression and the Paris 2024 Olympics",
     "section": "What the baseline shows",
     "text": "What the baseline shows\nDescribe and justify a simple course-based baseline regression model. Interpret the result that best establishes the rest of the story, including its direction, magnitude, scale, and uncertainty. Explain one limitation or unresolved pattern that motivates deeper analysis.\n\n\nShow code\n# Load packages and data, document preparation, and fit the baseline.\n\n\n\n\nShow code\n# Show a primary figure or table only if it helps answer the question."
   },
   {
     "objectID": "index.html#going-beyond-the-baseline",
     "href": "index.html#going-beyond-the-baseline",
-    "title": "Regression",
+    "title": "Statistical Regression and the Paris 2024 Olympics",
     "section": "Going beyond the baseline",
     "text": "Going beyond the baseline\nUse two STAT 330 method families. Give each part a descriptive heading that states the question or finding, not an assignment label. Explain why you chose each method, how you checked it, and what it adds to the answer.\n\nReplace with a question or finding\nPresent one method and its most useful evidence.\n\n\nShow code\n# Analysis code for this part.\n\n\n\n\nReplace with another question or finding\nPresent a method from a different family and its most useful evidence. Combine this with the preceding subsection if that creates a clearer story.\n\n\nShow code\n# Analysis code for this part."
   },
   {
     "objectID": "index.html#a-new-direction-with-ai",
     "href": "index.html#a-new-direction-with-ai",
-    "title": "Regression",
+    "title": "Statistical Regression and the Paris 2024 Olympics",
     "section": "A new direction with AI",
     "text": "A new direction with AI\nExplain the need revealed by your preliminary course-based work, the extension you implemented with AI support, and what it contributes to the same research question. Show its substantive result on this page and summarize your independent checks. If the extension is an untaught comparator, evaluate it against the core course-based model. Link to the AI-use record instead of placing a transcript here.\n\n\nShow code\n# Implement the verified extension or show its most useful result.\n\n\nDetails are in the AI-use record."
   },
   {
     "objectID": "index.html#what-this-means",
     "href": "index.html#what-this-means",
-    "title": "Regression",
+    "title": "Statistical Regression and the Paris 2024 Olympics",
     "section": "What this means",
     "text": "What this means\nAnswer the research question directly. Distinguish statistical evidence from practical importance, state the most consequential limitations, and suggest one sensible next step. Avoid causal claims unless the study design supports them."
   },
   {
     "objectID": "index.html#data-and-code",
     "href": "index.html#data-and-code",
-    "title": "Regression",
+    "title": "Statistical Regression and the Paris 2024 Olympics",
     "section": "Data and code",
     "text": "Data and code\n\nData: Replace with a working source link or citation and any brief acquisition note needed to reproduce the project.\nRepository: Replace with your repository URL.\nAI-use record\nOther sources: Cite package documentation, articles, code, and other sources that materially informed the work."
   }
