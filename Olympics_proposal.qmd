@@ -1,0 +1,105 @@
+---
+title: "Olympics"
+subtitle: "STAT 330 Portfolio Project Proposal"
+author: "Cassidee Beus and Racheal Casady"
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-fold: true
+    code-summary: "Show code"
+    embed-resources: true
+execute:
+  warning: false
+  message: false
+---
+
+::: {.callout-tip}
+This proposal is separate from the final case study and does not count toward its word range. Keep the required headings, but add, remove, or move code chunks and output as needed. Delete this note and all bold prompts before submitting.
+:::
+
+**Group members:** Rachael Casady and Cassidee Beus
+
+## Question and audience
+
+**State one focused regression question. Identify the intended audience, explain why the answer matters, and name the response and important candidate predictors.**  
+> Do economic resources and population help predict Olympic medal totals? The answer can impact how can we predict which country will do well in future Olympic games. Why do medal winning athletes do well and what sets their country apart? Is it because of where they are coming from (ecomonic status) or how many are coming (number of athletes)? 
+
+> The intended audience could be Olympic committees, journalists, Sports Agencies.  
+
+> This matters because we are curious to know if where these athletes are coming from or how many athletes the country sends effects how many medals they win. It matters because not every country has the same resources so does that effect their chances of winning medals at the olympics.
+
+> Response variable: Total Medals won  
+
+> Important Candidate predictors: number of athletes, GDP per capita, population.
+
+## Data
+
+**Provide a working source link or citation. Describe the observational unit, dimensions, response, candidate predictors, collection process if known, and evidence that the data can answer your question. Address permission to share or retrieve the data and any privacy, representation, measurement, or ethical concern.**
+
+```{r}
+# Load packages and read the data with a relative path or reproducible step.
+# Show only a compact check of dimensions and variables.
+library(tidyverse)
+library(ggplot2)
+Olympics =  read.csv("Paris2024_olympics_country_data.csv")
+dim(Olympics)
+summary(Olympics)
+
+
+```
+
+> https://www.kaggle.com/datasets/krzysztofszafraski/paris2024-olympics-country-level-data?resource=download  
+
+
+> The observational unit is a country at the Paris 2024 Olympics. The dimensions are 204 x 16. The response variable is number of medals won, and the candidate predictors are number of athletes, GDP per capita, and population. There is evidence that the data can answer the question because it has information on the countries participating in the Paris 2024 Olympics like the predictors previoiusly mentioned which could explain part of the question of economic resources and population. We obtained this public dataset from kaggle.com.
+
+## One useful first look
+
+```{r}
+# Create one figure that directly informs your research question.
+# Include a useful title, labels, units, and accessible colors.
+Olympics |>
+  pivot_longer(
+    cols = c(GDP.per.capita, Population, Number.of.athletes),
+    names_to = "predictor",
+    values_to = "value"
+  ) |>
+  ggplot(aes(x = value, y = Total.medals)) +
+  geom_point(alpha = 0.65) +
+  facet_wrap(~ predictor, scales = "free_x") +
+  labs(
+    x = NULL,
+    y = "Number of Medals Won",
+    title = "Medals Won compared with each predictor"
+  )
+
+```
+
+**In two to four sentences, explain the most important pattern. Do not make a causal claim unless the study design supports one.**
+The number of athletes comparison seems to have the most linear relationship with total medals won. The line has less of a curve than the other two predictors. This seems to suggest that there is a relationship between countries with more athlete representatives winning more medals.
+
+## Baseline model
+
+**Name and justify one simple starting model.**
+
+```{r}
+# Fit the baseline and display only the output needed below.
+fitted_olym = lm(Total.medals ~ Number.of.athletes + GDP.per.capita + Population, data = Olympics)
+summary(fitted_olym)
+```
+
+**Interpret one important coefficient, contrast, or prediction in context. Include direction, magnitude, units or scale, and uncertainty. Then identify one specific limitation, unexplained pattern, or opportunity for improvement.**
+The p-value for number of athletes is very small, suggesting that the number of athletes from each country does have an impact on whether a country had won a medal at the 2024 Paris Olympics. A possible limitation or concern for this dataset is that all of the coefficients for these predictors are very small and might not have a major impact on this response variable of total medals.
+
+## Where the analysis could go
+
+**Choose two different course-method families from the project instructions. For each, state what you might do and how it could help answer the question. These methods will form the core of the project and may change after feedback.**
+
+1. **Diagnostics and robustness:**  We hope to specifically find out if there is multicollinearity with population and number of athletes on the effect of winning medals.
+2. **Model structure:** We are curious about interaction relationships and seeing if transformations can help with the scale of our data
+
+## AI disclosure and sources
+
+**Disclose any AI used for debugging, proofreading, or other help with the proposal. This does not satisfy the required AI extension. Write “No AI used” if applicable. Cite the dataset and any other sources that materially informed the proposal.**
+AI was used to help read our dataset and articulate our research question in a way that made sense with the data.
