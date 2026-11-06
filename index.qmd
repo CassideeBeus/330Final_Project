@@ -1,9 +1,9 @@
 ---
-title: "Olympics Regression Stat 330 Final"
-subtitle: "Does a country's economic state or population effect their chances of winning medals at the Olympics?"
+title: "Statistical Regression and the Paris 2024 Olympics"
+subtitle: "Exploring the Impact of Different Variables on Total Medals Won per Country"
 author: "Rachael Casady and Cassidee Beus"
 date: last-modified
-description: "Economic and population impact on medals won at the Olympics"
+description: "Economic resources and population impact on winning Olympic medals"
 ---
 
 **Narrative word count:** Replace with a number from 750 to 1,000.
